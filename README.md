@@ -20,8 +20,8 @@ digital business card/ # 项目根文件夹（英文命名，规范易识别）
 └── avatar.jpg # 个人头像图片（支持 jpg/png 格式，无图片时 CSS 兜底显示字母头像）
 
 ## 页面公开访问方式
-1. Gitee仓库地址：【你的仓库链接，比如https://gitee.com/eliauk_1/digital-card】；
-2. Gitee Pages公开访问地址：【开启Pages后生成的链接，比如https://eliauk_1.gitee.io/digital-card】
+1. Gitee仓库地址：【https://github.com/2459566115/digital-business-card】；
+2. Gitee Pages公开访问地址：【https://2459566115.github.io/digital-business-card/】
 
 体现“软件作品”的一点
 本作品并非简单的静态文本页面，而是遵循Web开发“结构与样式分离”的工程化思想，具备响应式适配能力（兼容多终端），代码包含交互微效果（标签hover、卡片阴影变化等），文件命名/结构规范、可维护性强，符合软件作品的基本特征（而非仅展示内容的静态页面）。
