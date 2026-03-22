@@ -1,0 +1,397 @@
+/* -------------------- 全局重置 & 设计变量 -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(145deg, #eef2f7 0%, #d9e2ec 100%);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Roboto, Helvetica, sans-serif;
+    padding: 2rem 1.5rem;
+    line-height: 1.5;
+    color: #1e2a3e;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-container {
+    max-width: 880px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(0px);
+    border-radius: 2rem;
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.resume-container:hover {
+    box-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.25);
+}
+
+/* -------------------- 头部区域：现代渐变 + 优雅排版 -------------------- */
+.resume-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 2.5rem;
+    background: linear-gradient(135deg, #1f2f3c 0%, #1a2a36 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-header::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(52,152,219,0.15) 0%, rgba(52,152,219,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* 头像区域 - 现代渐变字母头像（无图片依赖，美观且可替换） */
+.avatar-wrapper {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(125deg, #3498db, #2c3e50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(255, 255, 255, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-transform: uppercase;
+    font-family: inherit;
+}
+
+.avatar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 25px -8px rgba(0, 0, 0, 0.4);
+}
+
+.header-info {
+    flex: 1;
+}
+
+.name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.25rem;
+    background: linear-gradient(120deg, #fff, #e0f0ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.major {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #cfdfed;
+    margin-top: 0.25rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.school-badge {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    padding: 0.2rem 0.7rem;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.basic-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    font-size: 0.85rem;
+    color: #cbdde9;
+    margin-top: 0.5rem;
+}
+
+.basic-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.08);
+    padding: 0.2rem 0.8rem;
+    border-radius: 30px;
+    backdrop-filter: blur(2px);
+}
+
+/* 个性签名 — 明亮装饰条 */
+.signature-block {
+    background: linear-gradient(95deg, #3498db, #2c6e9e);
+    margin: 0 1.5rem 1.5rem 1.5rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 60px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 5px 12px rgba(52,152,219,0.25);
+    letter-spacing: 0.3px;
+}
+
+/* 主体内容 */
+.resume-body {
+    padding: 0 2rem 2rem 2rem;
+}
+
+/* 通用区块样式 */
+.section {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e9edf2;
+    padding-bottom: 1.8rem;
+}
+
+.section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1f2f3c;
+    margin-bottom: 1rem;
+    padding-left: 0.8rem;
+    border-left: 5px solid #3498db;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-content {
+    color: #2c3e44;
+    font-size: 0.95rem;
+}
+
+/* 自我介绍文本 */
+.intro-text {
+    text-indent: 2em;
+    line-height: 1.7;
+    background: #fafcfd;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #eef2f8;
+}
+
+/* 教育背景卡片设计 */
+.edu-card {
+    background: #ffffff;
+    border-radius: 1.2rem;
+    padding: 1rem 1.3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0,0,0,0.03);
+    border: 1px solid #ecf1f6;
+    transition: all 0.2s;
+}
+
+.edu-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+}
+
+.edu-degree {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2f3c;
+}
+
+.edu-date {
+    font-size: 0.8rem;
+    color: #5f7f9c;
+    background: #eff3f8;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+}
+
+.edu-school {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2c6e9e;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edu-desc {
+    font-size: 0.88rem;
+    color: #4a627a;
+    line-height: 1.5;
+    margin-top: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid #cbdde9;
+}
+
+/* 标签区域 (兴趣 & 技能) 精致微交互 */
+.tags-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.tag-block {
+    flex: 1;
+    min-width: 180px;
+    background: #fbfdfe;
+    border-radius: 1.2rem;
+    padding: 0.8rem 1rem;
+    transition: all 0.2s;
+    border: 1px solid #ecf1f6;
+}
+
+.tag-block:hover {
+    background: #ffffff;
+    border-color: #cde3f0;
+    box-shadow: 0 6px 14px rgba(52,152,219,0.08);
+}
+
+.tag-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tag {
+    padding: 0.3rem 1rem;
+    background: #eef3fc;
+    color: #236b9b;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: default;
+    backdrop-filter: blur(2px);
+}
+
+.tag:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52,152,219,0.2);
+}
+
+/* 链接区域按钮升级 */
+.link-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: #1f2f3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.25s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.external-link:hover {
+    background: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(52,152,219,0.3);
+}
+
+/* 可选联系方式补充（邮箱） */
+.contact-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #4b6a86;
+    background: #f8fafd;
+    padding: 0.5rem 1rem;
+    border-radius: 60px;
+    width: fit-content;
+}
+
+/* 响应式细节 */
+@media (max-width: 680px) {
+    body {
+        padding: 1rem;
+    }
+    .resume-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.8rem 1.5rem;
+        gap: 1rem;
+    }
+    .avatar-wrapper {
+        margin-right: 0;
+    }
+    .basic-meta {
+        justify-content: center;
+    }
+    .resume-body {
+        padding: 0 1.2rem 1.8rem 1.2rem;
+    }
+    .signature-block {
+        margin: 0 1rem 1.2rem 1rem;
+    }
+    .tags-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .edu-header {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .name {
+        font-size: 2rem;
+    }
+}
+
+/* 微装饰 & 优雅滚动 */
+::selection {
+    background: #3498db30;
+    color: #1e2a3e;
+}
